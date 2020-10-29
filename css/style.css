@@ -50,6 +50,7 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .logo-box {
@@ -74,6 +75,7 @@ body {
 
   /*bug fix for shaky text during transition */
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -136,4 +138,84 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes moveInBottom {
+  0% {
+    /* to go down is positive, up is negative (relative to parent) */
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/*the link pseudo class for unvisited*/
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  /* top bottom left and right, top and bottom, left and right */
+  padding: 15px 40px;
+  /*top and bottom margins/paddings are respected */
+  display: inline-block;
+  /* */
+  border-radius: 100px;
+  transition: all 0.2s;
+  /*parent element for .btn::after */
+  position: relative;
+}
+
+.btn:hover {
+  /*  to go up it is negative value */
+  transform: translateY(-3px);
+  /* x offset y offset blur */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  /* realted to initial link state */
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: white;
+  color: #777;
+}
+
+/* The ::after selector inserts something after the content of each selected element(s). */
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*place it behind */
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+/* The ::after selector inserts something after the content of each selected element(s). */
+.btn-white::after {
+  content: '';
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0.05;
+}
+
+.btn-animated {
+  /* keyframe animatoon durate animaton time function animation delay */
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  /* animation will start at 0% from get go */
+  animation-fill-mode: backwards;
 }
