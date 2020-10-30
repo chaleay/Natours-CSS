@@ -1,0 +1,38 @@
+.header {
+  /*height of this element should always be 95% of viewport height*/
+  height: 95vh;
+  /*two background images - one on top of each other*/
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.745),
+      rgba($color-primary-dark, 0.745)
+    ),
+    url(../img/hero.jpg);
+  /*whatever the width of the viewport, it will try to fit the element inside of the box*/
+  background-size: cover;
+  /*where the iamge is glued to */
+  background-position: top;
+  /*identify all four edges of this polygon - can pass in 3 for  */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* this is the origin for our logo box abosolute positioning */
+  position: relative;
+
+  &__text-box {
+    position: absolute;
+    /*top and left are in relation to the parent element*/
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+}

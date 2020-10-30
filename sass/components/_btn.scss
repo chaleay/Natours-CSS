@@ -1,0 +1,68 @@
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* top bottom left and right, top and bottom, left and right */
+    padding: 1.5rem 4rem;
+    /*top and bottom margins/paddings are respected */
+    display: inline-block;
+    /* */
+    border-radius: 10rem;
+    transition: all 0.2s;
+    /*parent element for .btn::after */
+    position: relative;
+    font-size: 1.6rem;
+  }
+
+  &:hover {
+    /*  to go up it is negative value */
+    transform: translateY(-3px);
+    /* x offset y offset blur */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  /*when clicked*/
+  &:active {
+    /* realted to initial link state */
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*place it behind */
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    // The ::after selector inserts something after the content of each selected element(s). */
+    &::after {
+      content: '';
+      background-color: $color-white;
+    }
+  }
+
+  &--animated {
+    // keyframe animatoon durate animaton time function animation delay */
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    // animation will start at 0% from get go */
+    animation-fill-mode: backwards;
+  }
+}

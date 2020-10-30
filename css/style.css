@@ -17,77 +17,15 @@ body {
 html {
   font-size: 62.5%; }
 
-.header {
-  /*height of this element should always be 95% of viewport height*/
-  height: 95vh;
-  /*two background images - one on top of each other*/
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.745), rgba(40, 180, 133, 0.745)), url(../img/hero.jpg);
-  /*whatever the width of the viewport, it will try to fit the element inside of the box*/
-  background-size: cover;
-  /*where the iamge is glued to */
-  background-position: top;
-  /*identify all four edges of this polygon - can pass in 3 for  */
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-  /* this is the origin for our logo box abosolute positioning */
-  position: relative; }
-
-.header__text-box {
-  position: absolute;
-  /*top and left are in relation to the parent element*/
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center; }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-/*can happen in hovers too
-.logo:hover {
-  animation: moveInRight 1s ease-out 0.33s;
-}
-*/
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /*bug fix for shaky text during transition */
-  backface-visibility: hidden;
-  margin-bottom: 60px; }
-
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 700;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
-  /*
-  animation-delay: 2s;
-  animation-iteration-count: 3;
-  */ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.7rem;
-  animation: moveInRight 2s ease-out; }
-
 @keyframes moveInLeft {
   0% {
     opacity: 0;
     transform: translateX(-10rem); }
   /*
-  60% {
-    transform: rotate(289deg);
-  }
- */
+    60% {
+      transform: rotate(289deg);
+    }
+   */
   80% {
     transform: translateX(1rem); }
   100% {
@@ -113,59 +51,146 @@ html {
     opacity: 1;
     transform: translateX(0); } }
 
-/*the link pseudo class for unvisited*/
-.btn:link,
-.btn:visited {
+body {
+  /*good practice to put all font changes in body*/
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
+
+.heading-primary {
+  color: #fff;
   text-transform: uppercase;
-  text-decoration: none;
-  /* top bottom left and right, top and bottom, left and right */
-  padding: 1.5rem 4rem;
-  /*top and bottom margins/paddings are respected */
-  display: inline-block;
-  /* */
-  border-radius: 10rem;
-  transition: all 0.2s;
-  /*parent element for .btn::after */
-  position: relative;
-  font-size: 1.6rem; }
+  /*bug fix for shaky text during transition */
+  backface-visibility: hidden;
+  margin-bottom: 60px; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /*
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+      */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 2s ease-out; }
 
-.btn:hover {
-  /*  to go up it is negative value */
-  transform: translateY(-3px);
-  /* x offset y offset blur */
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+.btn {
+  /*when clicked*/ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* top bottom left and right, top and bottom, left and right */
+    padding: 1.5rem 4rem;
+    /*top and bottom margins/paddings are respected */
+    display: inline-block;
+    /* */
+    border-radius: 10rem;
+    transition: all 0.2s;
+    /*parent element for .btn::after */
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    /*  to go up it is negative value */
+    transform: translateY(-3px);
+    /* x offset y offset blur */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    /* realted to initial link state */
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*place it behind */
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--white {
+    background-color: #eee;
+    color: #777; }
+    .btn--white::after {
+      content: '';
+      background-color: #eee; }
+  .btn--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards; }
 
-/*when clicked*/
-.btn:active {
-  /* realted to initial link state */
-  transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+.header {
+  /*height of this element should always be 95% of viewport height*/
+  height: 95vh;
+  /*two background images - one on top of each other*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.745), rgba(40, 180, 133, 0.745)), url(../img/hero.jpg);
+  /*whatever the width of the viewport, it will try to fit the element inside of the box*/
+  background-size: cover;
+  /*where the iamge is glued to */
+  background-position: top;
+  /*identify all four edges of this polygon - can pass in 3 for  */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* this is the origin for our logo box abosolute positioning */
+  position: relative; }
+  .header__text-box {
+    position: absolute;
+    /*top and left are in relation to the parent element*/
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
 
-.btn--white {
-  background-color: white;
-  color: #777; }
+body {
+  /*good practice to put all font changes in body*/
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem; }
 
-.btn::after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /*place it behind */
-  z-index: -1;
-  transition: all 0.4s; }
-
-.btn--white::after {
-  content: '';
-  background-color: white; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
-
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards; }
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /*bug fix for shaky text during transition */
+  backface-visibility: hidden;
+  margin-bottom: 60px; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    /*
+      animation-delay: 2s;
+      animation-iteration-count: 3;
+      */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    animation: moveInRight 2s ease-out; }

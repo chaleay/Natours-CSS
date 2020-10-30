@@ -1,0 +1,24 @@
+*,
+*::after *::before {
+  margin: 0;
+  padding: 0;
+  // without this, any padding and border are added to the total height and width of the field*/
+  box-sizing: inherit;
+}
+
+body {
+  /*good practice to put all font changes in body*/
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+
+  box-sizing: border-box;
+}
+
+// control font size of rem elements  - equivalent of 10px since default is 16px*/
+html {
+  font-size: 62.5%;
+}
