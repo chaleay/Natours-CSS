@@ -1,0 +1,9 @@
+@mixin clearfix {
+  &::after {
+    //standard clearfix procedure - we are doing this because rows have no height otherwise
+    content: '';
+    display: table;
+    //to clear both floats - left or right
+    clear: both;
+  }
+}
