@@ -14,6 +14,7 @@
 @import 'components/btn';
 @import 'components/composition';
 @import 'components/feature-box';
+@import 'components/card';
 
 //layouts
 @import 'layout/grid';
@@ -28,6 +29,5 @@
 //   animation: moveInRight 1s ease-out 0.33s;
 // }
 // */
-
 // when float left / right, elements will lose their height */
 // with sass extends keyword, code that you specify is included in current css section and can be overwritten
