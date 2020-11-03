@@ -34,6 +34,7 @@
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
 
+  //create a replica of the button right beneath this one (-1 z axis)
   &::after {
     content: '';
     display: inline-block;
@@ -59,6 +60,17 @@
     }
   }
 
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    // The ::after selector inserts something after the content of each selected element(s). */
+    &::after {
+      content: '';
+      background-color: $color-primary-light;
+    }
+  }
+
   &--animated {
     // keyframe animatoon durate animaton time function animation delay */
     animation: moveInBottom 0.5s ease-out 0.75s;
@@ -78,7 +90,7 @@
     //add border at bottom that is color priamry color
     border-bottom: 1px solid $color-primary;
     transition: all 0.2s;
-    padding: 3px;
+    padding: 0.5rem;
   }
 
   //change state when clicked

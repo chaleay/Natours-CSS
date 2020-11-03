@@ -1,0 +1,75 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.55);
+  border-radius: 2rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  //skew the story
+  transform: skewX(-12deg);
+
+  //unskew all children - doesn't currently work though
+  // & > * {
+  // transform: skewX(12deg);
+  // }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    background-color: orange;
+    //specifies how elements outside the shape will react when near it
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+
+    //specify shape of the image, first element is radius, last two are where the center of the circle is located
+    //height and width need to be defined
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
+
+  &__image {
+    //fit image to its container
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all 0.8s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+    text-align: left;
+  }
+
+  &__caption {
+    //html nested inside shape
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.8s;
+    //to prevent shaking
+    //backface-visibility: hidden;
+  }
+
+  //selection caption when you hover and do stuff
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__image {
+    transform: translateX(-4rem) scale(1);
+    //css filters
+    filter: blur(2px) brightness(80%);
+  }
+}
