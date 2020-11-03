@@ -81,6 +81,13 @@
     padding: 3px;
   }
 
+  //change state when clicked
+  /*
+  &:focus {
+    outline: blue solid 3px;
+  }
+  */
+
   &:hover {
     background-color: $color-primary;
     color: $color-white;
