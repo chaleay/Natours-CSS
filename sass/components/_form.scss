@@ -16,6 +16,7 @@
     border-bottom: 3px solid transparent;
     width: 90%;
     display: block;
+    transition: all 0.3s;
 
     //style the input
     &::-webkit-input-placeholder {
@@ -55,5 +56,59 @@
     visibility: hidden;
     //where are placeholder will be when it is shown
     transform: translateY(-4rem);
+  }
+
+  &__radio-input {
+    display: none;
+  }
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    //parent element in html
+    position: relative;
+    padding-left: 4rem;
+  }
+
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    //this is what forms the circle
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.5rem;
+
+    &::after {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      //circle proportions
+      height: 1.3rem;
+      width: 1.3rem;
+      //parent doesnt have to use relative position, can be relative, as long as it is specified
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      // why does this center it?
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0;
+      transition: opacity 0.2s;
+
+      //border: 5px solid $color-primary;
+    }
+  }
+
+  //select sibling's child
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
   }
 }
