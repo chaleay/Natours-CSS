@@ -1,0 +1,109 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    background-color: $color-white;
+    width: 7rem;
+    height: 7rem;
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    //circle
+    border-radius: 50%;
+    z-index: 200;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    z-index: 100;
+    //transition
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+
+    //scale the background - anim (encompasses the entire screen);
+    //transform: scale(80);
+  }
+
+  //huge element that focuses the entire viewport
+  &__nav {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    //if left, comes from left, if right, comes from right
+    right: 0;
+    z-index: 150;
+
+    //make links unclickable
+    width: 0;
+    opacity: 0;
+
+    transition: all 0.8s cubic-bezier(0.67, 0, 0.06, 1.4);
+  }
+
+  &__list {
+    //list elements are by default block...i think
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__item {
+    margin: 1rem 1rem 5rem 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      //always looks good according to jonas
+      padding: 1rem 2rem;
+      font-weight: 300;
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $color-white;
+      //ornagered from 0 to 50, white from 50 to 100%
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      //if we double the background size...50% -> 100% and 100% - 200%, so if this becomes 200%, cool shit happens
+      background-size: 240%;
+      transition: all 0.3s;
+    }
+
+    &:hover,
+    &:active {
+      //background position depends on background-size, still playing around with what they do
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(2rem);
+    }
+  }
+
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    opacity: 1;
+    width: 100%;
+  }
+}
