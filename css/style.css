@@ -665,7 +665,7 @@ body {
   text-transform: uppercase;
   color: #fff;
   background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
-  background-size: 240%;
+  background-size: 220%;
   transition: all 0.3s; }
 
 .navigation__link:hover, .navigation__link:active {
@@ -709,11 +709,11 @@ body {
 
 .navigation__checkbox:checked + .navigation__button .navigation__icon::before {
   top: 0;
-  transform: rotate(45deg); }
+  transform: rotate(135deg); }
 
 .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
   top: 0;
-  transform: rotate(-45deg); }
+  transform: rotate(-135deg); }
 
 body {
   /*good practice to put all font changes in body*/

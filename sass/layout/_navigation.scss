@@ -87,7 +87,7 @@
         $color-white 50%
       );
       //if we double the background size...50% -> 100% and 100% - 200%, so if this becomes 200%, cool shit happens
-      background-size: 240%;
+      background-size: 220%;
       transition: all 0.3s;
     }
 
@@ -133,6 +133,7 @@
       transition: all 0.3s;
     }
 
+    //dicates at what point the rotation will revolve around - transform origin
     &::before {
       top: -0.8rem;
     }
@@ -155,11 +156,11 @@
   //move em to same position
   &__checkbox:checked + &__button &__icon::before {
     top: 0;
-    transform: rotate(45deg);
+    transform: rotate(135deg);
   }
 
   &__checkbox:checked + &__button &__icon::after {
     top: 0;
-    transform: rotate(-45deg);
+    transform: rotate(-135deg);
   }
 }
