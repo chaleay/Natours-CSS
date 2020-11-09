@@ -1,4 +1,5 @@
 .popup {
+  //black fade over entire screen to prep for popup
   position: fixed;
   top: 0;
   left: 0;
@@ -10,16 +11,32 @@
   //500 for css popup
   z-index: 500;
 
+  //make popup hidden and uninteractable
+  opacity: 0;
+  visibility: hidden;
+
+  //transition for overall popup (in this case black screen)
+  transition: all 0.3s;
+
+  //when this section is targeted via anchor id
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
   &__content {
     //mixin
-    @include absCenter;
+    @include popupCenter;
 
     width: 75%;
-    height: 60rem;
     background-color: $color-white;
     box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
     border-radius: 3px;
     display: table;
+    overflow: hidden;
+    opacity: 0;
+    //trans for open
+    transition: all 0.4s 0.2s;
   }
 
   &__left {
@@ -31,6 +48,8 @@
     width: 66.666667%;
     display: table-cell;
     vertical-align: middle;
+    padding: 3rem 5rem;
+    position: relative;
   }
 
   &__img {
@@ -39,5 +58,45 @@
   }
 
   &__text {
+    font-size: 1.4rem; //1.4 rem = 14px
+    margin-bottom: 4rem;
+
+    //create two differnet cols for the text
+    //add mozilla prefixes - auto prefixer
+    column-count: 2;
+    column-gap: 4rem; //1 rem = 14px
+    column-rule: 1px solid $color-grey-darker;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  //child selector - open state
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    &,
+    &:link,
+    &:visited {
+      color: $color-grey-dark-3;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      //because it is text, need to set predefined line height to 1
+      line-height: 1;
+    }
+
+    &:hover {
+      color: $color-primary;
+      transform: scale(1.5);
+    }
   }
 }
