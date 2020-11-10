@@ -14,4 +14,8 @@ body {
 // control font size of rem elements  - equivalent of 10px since default is 16px*/
 html {
   font-size: 62.5%;
+
+  @include respond-phone {
+    font-size: 50%;
+  }
 }
