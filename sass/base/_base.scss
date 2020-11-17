@@ -13,9 +13,21 @@ body {
 
 // control font size of rem elements  - equivalent of 10px since default is 16px*/
 html {
-  font-size: 62.5%;
+  font-size: 62.5%; // 1rem - 10px, default is 1rem = 16px, so 10/16
 
-  @include respond-phone {
-    font-size: 50%;
+  //width < 1200px
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem = 9px
+  }
+
+  //width < 900px
+  //lowest has to be at bottom
+  @include respond(tab-port) {
+    font-size: 50%; //1rem = 8px
+  }
+
+  //width > 1800px
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12px
   }
 }
