@@ -15,6 +15,8 @@ body {
 html {
   font-size: 62.5%; // 1rem - 10px, default is 1rem = 16px, so 10/16
 
+  //mobile first is the other way arounb in terms of ordering these (smaller first?)
+
   //width < 1200px
   @include respond(tab-land) {
     font-size: 56.25%; //1rem = 9px
