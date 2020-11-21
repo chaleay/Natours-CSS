@@ -9,6 +9,11 @@
 
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
 
 // control font size of rem elements  - equivalent of 10px since default is 16px*/

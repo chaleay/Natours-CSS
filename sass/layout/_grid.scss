@@ -8,6 +8,10 @@
   //use not pseduo selector to select the last one
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
+
+    @include respond(phone) {
+      margin-bottom: $gutter-vertical-small;
+    }
   }
 
   @include clearfix;
@@ -21,6 +25,14 @@
 
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
+
+      @include respond(phone) {
+        margin-right: 0;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 
