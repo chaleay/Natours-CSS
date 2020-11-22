@@ -1,6 +1,6 @@
 .row {
-  //difference btwn width and max-width? max-width means if we have enough available space, our container will be the width we specifiy.
-  //otherwise, the element will fill 100% of the available space
+  //difference btwn width and max-width? max-width means if we have enough available space, our row container will be the width we specifiy.
+  //otherwise, the element will fill 100% of the available space if there isn't enough viewport width
   max-width: $grid-width;
   //top and bottom 0, left and right are set to auto - this means that left and right margins when, calculated, will be the same, and the margins will be centered
   margin: 0 auto;
@@ -9,9 +9,14 @@
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
 
-    @include respond(phone) {
+    @include respond(tab-port) {
       margin-bottom: $gutter-vertical-small;
     }
+  }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
   }
 
   @include clearfix;
@@ -26,8 +31,10 @@
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
 
-      @include respond(phone) {
+      //for small screens, add vertical margins
+      @include respond(tab-port) {
         margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
       }
     }
 

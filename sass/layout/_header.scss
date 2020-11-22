@@ -14,8 +14,15 @@
   background-position: top;
   /*identify all four edges of this polygon - can pass in 3 for  */
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* this is the origin for our logo box abosolute positioning */
   position: relative;
+
+  //responsive media query for clip path
+  @include respond(phone) {
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
 
   &__text-box {
     position: absolute;
