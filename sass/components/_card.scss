@@ -195,4 +195,53 @@
     font-size: 6rem;
     font-weight: 100;
   }
+
+  //RESPONSIVE DESIGN SECTION FOR MOBILES
+  @include respond(tab-port) {
+    //height of the card container needs to be adjusted to be the same as well b/c of absolute positioning
+    height: auto;
+
+    &__side {
+      height: auto;
+      position: relative;
+      border-radius: 3px;
+
+      &--back {
+        transform: rotateY(0);
+      }
+    }
+
+    //no rotation for mobile
+    //.card:hover .card__side--front
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+
+    //card text area
+    &__cta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      text-align: center;
+    }
+
+    //set price box in its own wrapper to allow bottom margin away from button
+    &__price-box {
+      //text-align: center;
+      color: $color-white;
+      margin-bottom: 8rem;
+    }
+
+    &__price-only {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+    }
+
+    &__price-value {
+      font-size: 6rem;
+      font-weight: 100;
+    }
+  }
 }
