@@ -200,14 +200,19 @@
   @include respond(tab-port) {
     //height of the card container needs to be adjusted to be the same as well b/c of absolute positioning
     height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &__side {
       height: auto;
       position: relative;
+      box-shadow: none;
       border-radius: 3px;
-
       &--back {
         transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
       }
     }
 
@@ -219,29 +224,32 @@
 
     //card text area
     &__cta {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      text-align: center;
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    //card details in his version
+    &__text {
+      padding: 1rem 3rem;
+    }
+
+    &__picture {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
     }
 
     //set price box in its own wrapper to allow bottom margin away from button
     &__price-box {
       //text-align: center;
-      color: $color-white;
-      margin-bottom: 8rem;
-    }
-
-    &__price-only {
-      font-size: 1.4rem;
-      text-transform: uppercase;
+      margin-bottom: 3rem;
     }
 
     &__price-value {
       font-size: 6rem;
-      font-weight: 100;
     }
   }
 }
