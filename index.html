@@ -93,14 +93,27 @@
               <!-- the width of the images is the w part -->
               <img
                 srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
-                sizes="(max-width:L 900px)"
-              />
-
-              <image
-                src="img/nat-1-large.jpg"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
                 alt="Photo 1 "
                 class="composition__photo composition__photo--p1"
-              ></image>
+                src="img/nat-1.jpg"
+              />
+              <img
+                srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                alt="Photo 2 "
+                class="composition__photo composition__photo--p2"
+                src="img/nat-2.jpg"
+              />
+              <img
+                srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px"
+                alt="Photo 3 "
+                class="composition__photo composition__photo--p3"
+                src="img/nat-3.jpg"
+              />
+
+              <!--
               <image
                 src="img/nat-2-large.jpg"
                 alt="Photo 2"
@@ -111,6 +124,7 @@
                 alt="Photo 3"
                 class="composition__photo composition__photo--p3"
               ></image>
+              -->
             </div>
           </div>
         </div>
@@ -423,7 +437,7 @@
           <!---Density Switching -->
           <source
             srcset="
-              img/logo-green-small-1x.ong 1x,
+              img/logo-green-small-1x.png 1x,
               img/logo-green-small-2x.png 2x
             "
             media="(max-width: 37.5em)"
@@ -431,7 +445,6 @@
           <img
             srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x"
             alt="Full Logo"
-            class="footer__logo"
           />
         </picture>
       </div>
