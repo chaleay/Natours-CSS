@@ -7,7 +7,7 @@
       rgba($color-primary-light, 0.745),
       rgba($color-primary-dark, 0.745)
     ),
-    url(../img/hero.jpg);
+    url(../img/hero-small.jpg);
   /*whatever the width of the viewport, it will try to fit the element inside of the box*/
   background-size: cover;
   /*where the iamge is glued to */
@@ -17,6 +17,16 @@
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* this is the origin for our logo box abosolute positioning */
   position: relative;
+
+  //whenever dpi is higher than val, code in here applies
+  @media (min-resolution: 192dpi) {
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.745),
+        rgba($color-primary-dark, 0.745)
+      ),
+      url(../img/hero.jpg);
+  }
 
   //responsive media query for clip path
   @include respond(phone) {
