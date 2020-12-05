@@ -399,6 +399,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 2rem;
     overflow: hidden;
@@ -531,16 +532,18 @@ body {
     .story {
       transform: skewX(0); } }
   .story__shape {
-    width: 15rem;
     height: 15rem;
+    width: 15rem;
     float: left;
-    background-color: orange;
     -webkit-shape-outside: circle(50% at 50% 50%);
     shape-outside: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
-    position: relative; }
+    position: relative;
+    overflow: hidden; }
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      .story__shape {
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%); } }
     @media (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -680,7 +683,12 @@ body {
   z-index: 500;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s; }
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      background-color: rgba(0, 0, 0, 0.25); } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -799,22 +807,25 @@ body {
     width: calc( ((100% - 3 * 6rem) / 4) * 3 + (6rem * 2)); }
 
 .header {
-  /*height of this element should always be 95% of viewport height*/
-  height: 95vh;
+  height: 85vh;
   /*two background images - one on top of each other*/
   background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.745), rgba(40, 180, 133, 0.745)), url(../img/hero-small.jpg);
   /*whatever the width of the viewport, it will try to fit the element inside of the box*/
   background-size: cover;
   /*where the iamge is glued to */
   background-position: top;
-  /*identify all four edges of this polygon - can pass in 3 for  */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   /* this is the origin for our logo box abosolute positioning */
   position: relative; }
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
     .header {
-      background-image: linear-gradient(to right bottom, rgba(255, 185, 0, 0.745), rgba(255, 119, 48, 0.745)), url(../img/hero.jpg); } }
+      /*identify all four edges of this polygon - can pass in 3 for  */
+      /*height of this element should always be 95% of viewport height*/
+      height: 95vh;
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.745), rgba(40, 180, 133, 0.745)), url(../img/hero.jpg); } }
   @media (min-width: 2000px) {
     .header {
       background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.745), rgba(40, 180, 133, 0.745)), url(../img/hero.jpg); } }

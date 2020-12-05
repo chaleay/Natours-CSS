@@ -1,6 +1,5 @@
 .header {
-  /*height of this element should always be 95% of viewport height*/
-  height: 95vh;
+  height: 85vh;
   /*two background images - one on top of each other*/
   background-image: linear-gradient(
       to right bottom,
@@ -12,14 +11,22 @@
   background-size: cover;
   /*where the iamge is glued to */
   background-position: top;
-  /*identify all four edges of this polygon - can pass in 3 for  */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
   /* this is the origin for our logo box abosolute positioning */
   position: relative;
 
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    /*identify all four edges of this polygon - can pass in 3 for  */
+    /*height of this element should always be 95% of viewport height*/
+    height: 95vh;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  }
+
   //whenever dpi is higher than val, and the width of screen is > 600px code in here applies
-  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+  @media (min-resolution: 192dpi) and (min-width: 37.5em),
+    (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    (min-width: 125em) {
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.745),

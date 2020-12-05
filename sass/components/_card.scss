@@ -16,6 +16,7 @@
     left: 0;
     //after you adjust absolute position, card width needs to be changed to fit width of container
     width: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 2rem;
     //image is overflowing the containing and hiding the border radius, so set to hidden so we cant see the image overflow

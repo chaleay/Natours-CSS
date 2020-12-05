@@ -26,21 +26,27 @@
   }
 
   &__shape {
-    width: 15rem;
     height: 15rem;
+    width: 15rem;
     float: left;
-    background-color: orange;
     //specifies how elements outside the shape will react when near it
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-
-    //specify shape of the image, first element is radius, last two are where the center of the circle is located
-    //height and width need to be defined
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
-
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
+    //cuts out parts of the image that are bigger than the element container
+    overflow: hidden;
+    //why do clip path over border radius?
+    border-radius: 50%;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      //specify shape of the image, first element is radius, last two are where the center of the circle is located
+      //height and width need to be defined
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      //no need for border radius if clip path takes effect
+      border-radius: none;
+    }
 
     @include respond(phone) {
       transform: translateX(-3rem) skewX(0);
