@@ -198,7 +198,8 @@
   }
 
   //RESPONSIVE DESIGN SECTION FOR MOBILES
-  @include respond(tab-port) {
+  //@include respond(tab-port) {
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     //height of the card container needs to be adjusted to be the same as well b/c of absolute positioning
     height: auto;
     border-radius: 3px;
